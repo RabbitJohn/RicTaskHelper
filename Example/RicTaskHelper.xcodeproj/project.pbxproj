@@ -37,7 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0F276B9BF182AF8700F3ECD0 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		0F276B9BF182AF8700F3ECD0 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		18BBABAB43078DB1AE1B3BC2 /* Pods-RicTaskHelper_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RicTaskHelper_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RicTaskHelper_Tests/Pods-RicTaskHelper_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		33745FB023D6EFBCE12B0052 /* Pods-RicTaskHelper_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RicTaskHelper_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-RicTaskHelper_Example/Pods-RicTaskHelper_Example.release.xcconfig"; sourceTree = "<group>"; };
 		35AF57A50F892DF92BAFC98B /* Pods-RicTaskHelper_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RicTaskHelper_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RicTaskHelper_Tests/Pods-RicTaskHelper_Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -63,9 +63,9 @@
 		6003F5BB195388D20070C39A /* Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tests.m; sourceTree = "<group>"; };
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
 		71719F9E1E33DC2100824A3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		79FC900125EE4B5AA1683BA1 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		79FC900125EE4B5AA1683BA1 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		B359ACEC283DB3E4378F26E1 /* RicTaskHelper.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = RicTaskHelper.podspec; path = ../RicTaskHelper.podspec; sourceTree = "<group>"; };
+		B359ACEC283DB3E4378F26E1 /* RicTaskHelper.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = RicTaskHelper.podspec; path = ../RicTaskHelper.podspec; sourceTree = "<group>"; };
 		BB2F66F67E3A123B15C4D5C4 /* Pods-RicTaskHelper_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RicTaskHelper_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RicTaskHelper_Example/Pods-RicTaskHelper_Example.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -251,6 +251,7 @@
 				ORGANIZATIONNAME = zLihuan;
 				TargetAttributes = {
 					6003F5AD195388D20070C39A = {
+						LastSwiftMigration = 0810;
 						TestTargetID = 6003F589195388D20070C39A;
 					};
 				};
@@ -568,6 +569,7 @@
 				INFOPLIST_FILE = "Tests/Tests-Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RicTaskHelper_Example.app/RicTaskHelper_Example";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -588,6 +590,7 @@
 				INFOPLIST_FILE = "Tests/Tests-Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RicTaskHelper_Example.app/RicTaskHelper_Example";
 				WRAPPER_EXTENSION = xctest;
 			};

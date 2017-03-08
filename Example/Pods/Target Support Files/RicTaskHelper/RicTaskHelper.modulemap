@@ -1,0 +1,6 @@
+framework module RicTaskHelper {
+  umbrella header "RicTaskHelper-umbrella.h"
+
+  export *
+  module * { export * }
+}

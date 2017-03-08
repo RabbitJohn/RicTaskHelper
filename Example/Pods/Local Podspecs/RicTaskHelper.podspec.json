@@ -1,0 +1,22 @@
+{
+  "name": "RicTaskHelper",
+  "version": "0.1.0",
+  "summary": "A short description of RicTaskHelper.",
+  "description": "a task helper used to process the upload ,download or other task process.",
+  "homepage": "https://github.com/zLihuan/RicTaskHelper",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "zLihuan": "625482408@qq.com"
+  },
+  "source": {
+    "git": "https://github.com/zLihuan/RicTaskHelper.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "RicTaskHelper/Classes/**/*"
+}

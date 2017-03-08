@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+a task helper used to process the upload ,download or other task process.
                        DESC
 
   s.homepage         = 'https://github.com/zLihuan/RicTaskHelper'
