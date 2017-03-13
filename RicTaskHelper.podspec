@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'RicTaskHelper'
-  s.version          = '0.1.7'
+  s.version          = '0.1.8'
   s.summary          = 'a TaskHelper for uploading or downloading operation using NSOperationQueue.'
 
 # This description is used to generate tags and improve search results.
