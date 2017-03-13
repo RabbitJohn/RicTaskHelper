@@ -15,6 +15,9 @@
 
 typedef void(^CompeletedNotice)(void);
 
+/**
+ task id of a task operation if you don't set it ,it will be generated automatically.
+ */
 @property (nonatomic, copy) NSString *taskId;
 
 /**

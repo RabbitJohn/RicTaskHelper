@@ -10,7 +10,7 @@
 #import <RicTaskHelper/RicTaskHelper-umbrella.h>
 @interface RicViewController ()<NSURLSessionDownloadDelegate>
 
-@property (nonatomic, strong) RicTask *task;
+@property (nonatomic, strong) RicTask *downloadTask;
 @property (nonatomic, strong) NSMutableData *data;
 @end
 
@@ -19,6 +19,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    // Download
     RicDownloadTask *downloadTask = [[RicDownloadTask alloc] init];
     NSDictionary *taskInfo = @{@"downloadUrl":@"http://a4.att.hudong.com/38/47/19300001391844134804474917734_950.png"};
     downloadTask.customInfomation = taskInfo;
@@ -41,7 +42,7 @@
     RicTaskHelper *helper = [[RicTaskHelper alloc] init];
     [helper addTask:downloadTask];
     
-    self.task = downloadTask;
+    self.downloadTask = downloadTask;
     
     [helper startTasks:^{
         
@@ -51,6 +52,31 @@
     } compeleteAction:^{
         NSLog(@"compeleted");
     }];
+    
+  
+    RicUploadTask *uploadTask = [[RicUploadTask alloc] init];
+    uploadTask.fetchDataAction = ^id{
+        return @"here return a upload resource or a infomation of uploading.";
+    };
+    uploadTask.uploadAction = ^(id uploadInfomation,CompeletedNotice noticeBlock){
+        
+        /// do you uploading operation here.
+        ///...
+        ///...
+        // anyway when you have uploaded the data please invoke the noticeBlock
+        // if you has an async uploading operation you should copy the noticeBlock and invoked it in the completed handle in you async result catching block. like: noticeBlock();
+    };
+    
+    RicTaskHelper *uploadHelper = [[RicTaskHelper alloc] init];
+    [uploadHelper addTask:uploadTask];
+    [uploadHelper startTasks:^{
+        // performing UI loading
+    } progressHandle:^(NSInteger compeletedCount, NSInteger totalCount) {
+        
+    } compeleteAction:^{
+        
+    }];
+    
     
 	// Do any additional setup after loading the view, typically from a nib.
 }
@@ -62,8 +88,8 @@
  */
 - (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask
 didFinishDownloadingToURL:(NSURL *)location{
-    self.task.progress = 1;
-
+    self.downloadTask.progress = 1;
+    
     
     
 }
@@ -77,8 +103,7 @@ totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite{
         _data = [NSMutableData data];
     }
     
-    
-    self.task.progress=totalBytesWritten/(totalBytesExpectedToWrite*1.0);
+    self.downloadTask.progress=totalBytesWritten/(totalBytesExpectedToWrite*1.0);
     
 }
 
