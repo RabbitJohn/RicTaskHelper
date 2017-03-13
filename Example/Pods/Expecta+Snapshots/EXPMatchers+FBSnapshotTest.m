@@ -18,7 +18,7 @@
     return instance;
 }
 
-+ (BOOL)compareSnapshotOfViewOrLayer:(id)viewOrLayer snapshot:(NSString *)snapshot testCase:(id)testCase record:(BOOL)record referenceDirectory:(NSString *)referenceDirectory tolerance:(CGFloat)tolerance error:(NSError **)error
++ (BOOL)compareSnapshotOfViewOrLayer:(id)viewOrLayer snapshot:(NSString *)snapshot testCase:(id)testCase record:(BOOL)record referenceDirectory:(NSString *)referenceDirectory error:(NSError **)error
 
 {
     FBSnapshotTestController *snapshotController = [[FBSnapshotTestController alloc] initWithTestClass:[testCase class]];
@@ -34,7 +34,7 @@
     return [snapshotController compareSnapshotOfViewOrLayer:viewOrLayer
                                                    selector:NSSelectorFromString(snapshot)
                                                  identifier:nil
-                                                  tolerance:tolerance
+                                                  tolerance:0
                                                       error:error];
 }
 
@@ -133,7 +133,7 @@ NSString *sanitizedTestPath(){
     return name;
 }
 
-EXPMatcherImplementationBegin(haveValidSnapshotWithTolerance, (CGFloat tolerance)){
+EXPMatcherImplementationBegin(haveValidSnapshot, (void)){
     __block NSError *error = nil;
 
     prerequisite(^BOOL{
@@ -151,7 +151,7 @@ EXPMatcherImplementationBegin(haveValidSnapshotWithTolerance, (CGFloat tolerance
             actual = [actual view];
         }
 
-        return [EXPExpectFBSnapshotTest compareSnapshotOfViewOrLayer:actual snapshot:name testCase:[self testCase] record:NO referenceDirectory:referenceImageDir tolerance:tolerance error:&error];
+        return [EXPExpectFBSnapshotTest compareSnapshotOfViewOrLayer:actual snapshot:name testCase:[self testCase] record:NO referenceDirectory:referenceImageDir error:&error];
     });
 
     failureMessageForTo(^NSString *{
@@ -165,11 +165,6 @@ EXPMatcherImplementationBegin(haveValidSnapshotWithTolerance, (CGFloat tolerance
     failureMessageForNotTo(^NSString *{
         return [EXPExpectFBSnapshotTest combinedError:@"expected to not have a matching snapshot in" test:sanitizedTestPath() error:error];
     });
-}
-EXPMatcherImplementationEnd
-
-EXPMatcherImplementationBegin(haveValidSnapshot, (void)) {
-    return self.haveValidSnapshotWithTolerance(0);
 }
 EXPMatcherImplementationEnd
 
@@ -192,7 +187,7 @@ EXPMatcherImplementationBegin(recordSnapshot, (void)) {
             actual = [actual view];
         }
 
-        [EXPExpectFBSnapshotTest compareSnapshotOfViewOrLayer:actual snapshot:sanitizedTestPath() testCase:[self testCase] record:YES referenceDirectory:referenceImageDir tolerance:0 error:&error];
+        [EXPExpectFBSnapshotTest compareSnapshotOfViewOrLayer:actual snapshot:sanitizedTestPath() testCase:[self testCase] record:YES referenceDirectory:referenceImageDir error:&error];
         return NO;
     });
 
@@ -221,7 +216,7 @@ EXPMatcherImplementationBegin(recordSnapshot, (void)) {
 }
 EXPMatcherImplementationEnd
 
-EXPMatcherImplementationBegin(haveValidSnapshotNamedWithTolerance, (NSString *snapshot, CGFloat tolerance)) {
+EXPMatcherImplementationBegin(haveValidSnapshotNamed, (NSString *snapshot)){
     BOOL snapshotIsNil = (snapshot == nil);
     __block NSError *error = nil;
 
@@ -237,7 +232,7 @@ EXPMatcherImplementationBegin(haveValidSnapshotNamedWithTolerance, (NSString *sn
 
             actual = [actual view];
         }
-        return [EXPExpectFBSnapshotTest compareSnapshotOfViewOrLayer:actual snapshot:snapshot testCase:[self testCase] record:NO referenceDirectory:referenceImageDir tolerance:tolerance error:&error];
+        return [EXPExpectFBSnapshotTest compareSnapshotOfViewOrLayer:actual snapshot:snapshot testCase:[self testCase] record:NO referenceDirectory:referenceImageDir error:&error];
     });
 
     failureMessageForTo(^NSString *{
@@ -252,11 +247,6 @@ EXPMatcherImplementationBegin(haveValidSnapshotNamedWithTolerance, (NSString *sn
     failureMessageForNotTo(^NSString *{
         return [EXPExpectFBSnapshotTest combinedError:@"expected not to have a matching snapshot named" test:snapshot error:error];
     });
-}
-EXPMatcherImplementationEnd
-
-EXPMatcherImplementationBegin(haveValidSnapshotNamed, (NSString *snapshot)) {
-    return self.haveValidSnapshotNamedWithTolerance(snapshot, 0);
 }
 EXPMatcherImplementationEnd
 
@@ -279,7 +269,7 @@ EXPMatcherImplementationBegin(recordSnapshotNamed, (NSString *snapshot)) {
             actual = [actual view];
         }
 
-        [EXPExpectFBSnapshotTest compareSnapshotOfViewOrLayer:actual snapshot:snapshot testCase:[self testCase] record:YES referenceDirectory:referenceImageDir tolerance:0 error:&error];
+        [EXPExpectFBSnapshotTest compareSnapshotOfViewOrLayer:actual snapshot:snapshot testCase:[self testCase] record:YES referenceDirectory:referenceImageDir error:&error];
         return NO;
     });
 

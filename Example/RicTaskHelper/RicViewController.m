@@ -55,10 +55,8 @@
     
   
     RicUploadTask *uploadTask = [[RicUploadTask alloc] init];
-    uploadTask.fetchDataAction = ^id{
-        return @"here return a upload resource or a infomation of uploading.";
-    };
-    uploadTask.uploadAction = ^(id uploadInfomation,CompeletedNotice noticeBlock){
+    uploadTask.customInfomation = @{@"uploadInfo":@"an infomation here"};
+    uploadTask.uploadAction = ^(RicTask *task,CompeletedNotice noticeBlock){
         
         /// do you uploading operation here.
         ///...

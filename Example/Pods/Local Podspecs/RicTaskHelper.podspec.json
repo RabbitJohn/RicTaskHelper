@@ -1,8 +1,8 @@
 {
   "name": "RicTaskHelper",
-  "version": "0.1.0",
-  "summary": "A short description of RicTaskHelper.",
-  "description": "a task helper used to process the upload ,download or other task process.",
+  "version": "0.1.3",
+  "summary": "a TaskHelper for uploading or downloading operation using NSOperationQueue.",
+  "description": "a TaskHelper for uploading or downloading operation of easy using NSOperationQueue.",
   "homepage": "https://github.com/zLihuan/RicTaskHelper",
   "license": {
     "type": "MIT",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/zLihuan/RicTaskHelper.git",
-    "tag": "0.1.0"
+    "tag": "0.1.3"
   },
   "platforms": {
     "ios": "8.0"

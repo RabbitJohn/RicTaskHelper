@@ -1,4 +1,3 @@
-#import <CoreGraphics/CoreGraphics.h>
 #import <Expecta/Expecta.h>
 #import "ExpectaObject+FBSnapshotTest.h"
 
@@ -13,6 +12,3 @@ EXPMatcherInterface(recordSnapshot, (void));
 
 EXPMatcherInterface(haveValidSnapshotNamed, (NSString *snapshot));
 EXPMatcherInterface(recordSnapshotNamed, (NSString *snapshot));
-
-EXPMatcherInterface(haveValidSnapshotNamedWithTolerance, (NSString *snapshot, CGFloat tolerance));
-EXPMatcherInterface(haveValidSnapshotWithTolerance, (CGFloat tolerance));
