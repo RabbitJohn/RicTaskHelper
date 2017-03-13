@@ -7,12 +7,17 @@
 
 ## Usage
 ### for downloaing
+
 RicDownloadTask *downloadTask = [[RicDownloadTask alloc] init];
+
 NSDictionary *taskInfo = @{@"downloadUrl":@"http://a4.att.hudong.com/38/47/19300001391844134804474917734_950.png"};
+
 downloadTask.customInfomation = taskInfo;
+
 downloadTask.progressHandle = ^(CGFloat progress){
 NSLog(@"progress :%f",progress);
 };
+
 downloadTask.downloadAction = ^(RicTask* task,CompeletedNotice notice){
 NSLog(@"doloading begin");
 
@@ -42,32 +47,32 @@ NSLog(@"compeleted");
 // prepare for the resouce or resouce information for uploading.
 RicUploadTask *uploadTask = [[RicUploadTask alloc] init];
 
-uploadTask.fetchDataAction = ^id{
-return @"here return a upload resource or a infomation of uploading.";
-};
+uploadTask.customInfomation = @{@"uploadData":@"some data here"};
 
-uploadTask.uploadAction = ^(id uploadInfomation,CompeletedNotice noticeBlock){
+uploadTask.uploadAction = ^(RicTask task,CompeletedNotice noticeBlock){
+// get data from task.customInfomation
 
 /// do you uploading operation here.
-///...
-///...
-//⚠️ anyway when you have uploaded the data please invoke the noticeBlock
-//⚠️ if you has an async uploading operation you should copy the noticeBlock and invoked it in the completed handle in you async result catching block. like: noticeBlock();
+
 // when completed
-    noticeBlock();
+
+   noticeBlock();
+    
 };
 
 RicTaskHelper *uploadHelper = [[RicTaskHelper alloc] init];
+
 [uploadHelper addTask:uploadTask];
+
 [uploadHelper startTasks:^{
+
 // performing UI loading
+
 } progressHandle:^(NSInteger compeletedCount, NSInteger totalCount) {
 
 } compeleteAction:^{
 
 }];
-
-
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 

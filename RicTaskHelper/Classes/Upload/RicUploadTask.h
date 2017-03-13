@@ -12,12 +12,8 @@
 @interface RicUploadTask : RicTask
 
 /**
- data for uploading handle|获取数据操作
- */
-@property (nonatomic, copy) id (^fetchDataAction)(void);
-/**
  operation of uploading|上传操作
  */
-@property (nonatomic, copy) void(^uploadAction)(id uploadInfo,CompeletedNotice noticeBlock);
+@property (nonatomic, copy) void(^uploadAction)(RicTask *task,CompeletedNotice notice);
 
 @end

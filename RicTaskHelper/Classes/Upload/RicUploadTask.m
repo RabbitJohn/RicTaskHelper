@@ -22,11 +22,7 @@
     return self;
 }
 
-- (id(^)(void))dataPreparement{
-    return self.fetchDataAction;
-}
-
-- (void(^)(id dataInfo,CompeletedNotice notice))dataProcessAction{
+- (void(^)(RicTask *task,CompeletedNotice notice))dataProcessAction{
     return self.uploadAction;
 }
 

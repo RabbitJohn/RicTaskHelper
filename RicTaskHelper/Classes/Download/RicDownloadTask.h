@@ -10,7 +10,7 @@
 
 @interface RicDownloadTask : RicTask
 
-@property (nonatomic, copy) void(^downloadAction)(id downloadInfo,CompeletedNotice noticeBlock);
+@property (nonatomic, copy) void(^downloadAction)(RicTask *task,CompeletedNotice noticeBlock);
 
 
 @end
