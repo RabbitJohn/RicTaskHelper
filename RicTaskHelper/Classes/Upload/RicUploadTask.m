@@ -25,5 +25,9 @@
 - (void(^)(RicTask *task,CompeletedNotice notice))dataProcessAction{
     return self.uploadAction;
 }
-
+- (void)setDataProcessAction:(void (^)(RicTask *, CompeletedNotice))dataProcessAction{
+#ifdef DEBUG
+    NSAssert(NO, @"use uploadAction instead");
+#endif
+}
 @end
