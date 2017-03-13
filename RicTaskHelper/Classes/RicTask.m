@@ -13,6 +13,7 @@
 @property (nonatomic, assign) BOOL finished;
 @property (nonatomic, assign) BOOL executing;
 @property (nonatomic, strong) dispatch_semaphore_t compeleteSemaphore;
+
 @end
 
 
@@ -39,8 +40,10 @@
             self.executing = YES;
             dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
             dispatch_async(queue, ^{
-                
-                [self taskStarted];
+                NSLog(@"uploading task has started!");
+                if(self.taskHasBeginRun){
+                    self.taskHasBeginRun(self);
+                }
                 dispatch_queue_t aq = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
                 dispatch_async(aq, ^{
                     self.compeleteSemaphore = dispatch_semaphore_create(0);
@@ -53,7 +56,10 @@
                     dispatch_semaphore_wait(self.compeleteSemaphore, DISPATCH_TIME_FOREVER);
                     self.executing = NO;
                     self.finished = YES;
-                    [self taskCompeleted];
+                    NSLog(@"uploading task has compeleted!");
+                    if(self.taskHasFinished){
+                        self.taskHasFinished(self);
+                    }
                 });
                 
             });

@@ -33,15 +33,13 @@ typedef void(^CompeletedNotice)(void);
  */
 @property (nonatomic, strong) NSDictionary *customInfomation;
 
+@property (nonatomic, copy) void(^taskHasBeginRun)(RicTask *task);
+@property (nonatomic, copy) void(^taskHasFinished)(RicTask *task);
+
 /**
  operation of dataInfo | subclass should rewrite this property or method
  */
 @property (nonatomic, copy, readonly) void(^dataProcessAction)(RicTask *task,CompeletedNotice noticeBlock);
-
-
-- (void)taskStarted;
-
-- (void)taskCompeleted;
 
 
 @end

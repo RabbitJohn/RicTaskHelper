@@ -9,53 +9,6 @@
 #import "RicTaskHelper.h"
 #import <objc/runtime.h>
 
-@interface RicTask(private)
-
-@property (nonatomic, copy) void(^taskHasBeginRun)(RicTask *task);
-@property (nonatomic, copy) void(^taskHasFinished)(RicTask *task);
-
-@end
-
-const NSString *RicTaskHasBeginRunKey = @"taskHasBeginRun";
-const NSString *RicTaskHasFinished = @"taskHasFinished";
-
-@implementation RicTask (private)
-
-- (void)taskStarted{
-    NSLog(@"uploading task has started!");
-    if(self.taskHasBeginRun){
-        self.taskHasBeginRun(self);
-    }
-}
-
-- (void)taskCompeleted{
-    NSLog(@"uploading task has compeleted!");
-    if(self.taskHasFinished){
-        self.taskHasFinished(self);
-    }
-}
-
-- (void (^)(RicTask *))taskHasBeginRun{
-    return objc_getAssociatedObject(self, (__bridge const void *)(RicTaskHasBeginRunKey));
-}
-
-- (void)setTaskHasBeginRun:(void (^)(RicTask *))taskHasBeginRun
-{
-    objc_setAssociatedObject(self, (__bridge const void *)(RicTaskHasBeginRunKey), taskHasBeginRun, OBJC_ASSOCIATION_COPY);
-}
-
-- (void (^)(RicTask *))taskHasFinished{
-    return objc_getAssociatedObject(self, (__bridge const void *)(RicTaskHasFinished));
-}
-
-- (void)setTaskHasFinished:(void (^)(RicTask *))taskHasFinished{
-    objc_setAssociatedObject(self, (__bridge const void *)(RicTaskHasFinished), taskHasFinished, OBJC_ASSOCIATION_COPY);
-}
-
-
-@end
-
-
 @interface RicTaskHelper ()
 
 @property (nonatomic, strong) NSOperationQueue *operationQueue;
@@ -68,7 +21,7 @@ const NSString *RicTaskHasFinished = @"taskHasFinished";
 
 @property (nonatomic, assign, readonly) BOOL processTaskCompeleted;
 @property (nonatomic, assign) BOOL hasStart;
-
+@property (nonatomic, assign) NSInteger compeletedCount;
 @end
 
 @implementation RicTaskHelper
@@ -78,6 +31,7 @@ const NSString *RicTaskHasFinished = @"taskHasFinished";
     self = [super init];
     if(self){
         self.maxConcurrencyProcessCount = 5;
+        self.compeletedCount = 0;
     }
     return self;
 }
@@ -218,7 +172,7 @@ const NSString *RicTaskHasFinished = @"taskHasFinished";
 }
 
 - (BOOL)uploadTaskCompeleted{
-    return self.processingTasks.count == 0;
+    return self.compeletedCount == self.processTasks.count;
 }
 
 #pragma mark - private methods
@@ -246,13 +200,15 @@ const NSString *RicTaskHasFinished = @"taskHasFinished";
             }
             if(self.uploadTaskCompeleted){
                 self.hasStart = NO;
+                self.compeletedCount = 0;
                 [self.processTasks removeAllObjects];
                 if(self.compeletedAction != NULL){
                     self.compeletedAction();
                 }
             }else{
+                self.compeletedCount ++;
                 if(self.progressHandle != NULL){
-                    self.progressHandle(self.processTasks.count-self.operationQueue.operationCount,self.processTasks.count);
+                    self.progressHandle(self.compeletedCount,self.processTasks.count);
                 }
             }
         }
