@@ -3,7 +3,7 @@
 //  creditor
 //
 //  Created by john on 2017/2/23.
-//  Copyright © 2017年 Jney. All rights reserved.
+//  Copyright © 2017年 john. All rights reserved.
 //
 
 #import "RicTaskHelper.h"

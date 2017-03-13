@@ -3,7 +3,7 @@
 //  creditor
 //
 //  Created by john on 2017/2/23.
-//  Copyright © 2017年 Jney. All rights reserved.
+//  Copyright © 2017年 john. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -38,7 +38,7 @@
 /**
  开始上传
 
- @param UIPerformanceWhenUploadTasksHasStarted 开始上传时的UI loading 效果
+ @param UIPerformanceWhenTasksHasStarted 开始处理时的UI loading 效果
  @param progressHandle 上传进度回掉
  @param compeletedAction 完成上传回掉
  */
