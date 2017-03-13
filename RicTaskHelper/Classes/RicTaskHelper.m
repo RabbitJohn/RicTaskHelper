@@ -19,9 +19,9 @@
 @property (nonatomic, copy) void(^compeletedAction)(void);
 @property (nonatomic, copy) void(^progressHandle)(NSInteger compeletedCount,NSInteger totalCount);
 
-@property (nonatomic, assign, readonly) BOOL processTaskCompeleted;
 @property (nonatomic, assign) BOOL hasStart;
 @property (nonatomic, assign) NSInteger compeletedCount;
+
 @end
 
 @implementation RicTaskHelper
