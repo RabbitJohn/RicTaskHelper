@@ -17,7 +17,7 @@
 @property (nonatomic, strong) NSMutableArray <RicTask *>*tasksHasNoDependcy;
 
 @property (nonatomic, copy) void(^compeletedAction)(void);
-@property (nonatomic, copy) void(^progressHandle)(NSInteger compeletedCount,NSInteger totalCount);
+@property (nonatomic, copy) void(^progressHandle)(NSInteger compeletedCount,NSInteger totalCount,RicTask *compeletedTask);
 
 @property (nonatomic, assign) BOOL hasStart;
 @property (nonatomic, assign) NSInteger compeletedCount;
@@ -105,7 +105,7 @@
     self.operationQueue.maxConcurrentOperationCount = _maxConcurrencyProcessCount;
 }
 
-- (void)startTasks:(void(^)(void))UIPerformanceWhenTasksHasStarted progressHandle:(void(^)(NSInteger compeletedCount,NSInteger totalCount))progressHandle compeleteAction:(void(^)(void))compeletedAction{
+- (void)startTasks:(void(^)(void))UIPerformanceWhenTasksHasStarted progressHandle:(void(^)(NSInteger compeletedCount,NSInteger totalCount,RicTask *compeletedTask))progressHandle compeleteAction:(void(^)(void))compeletedAction{
     
     if(self.hasStart || self.processTasks.count == 0){
         return;
@@ -208,7 +208,7 @@
             }else{
                 self.compeletedCount ++;
                 if(self.progressHandle != NULL){
-                    self.progressHandle(self.compeletedCount,self.processTasks.count);
+                    self.progressHandle(self.compeletedCount,self.processTasks.count,task);
                 }
             }
         }

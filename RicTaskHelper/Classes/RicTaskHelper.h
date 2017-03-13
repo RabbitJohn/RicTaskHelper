@@ -42,7 +42,7 @@
  @param progressHandle 上传进度回掉
  @param compeletedAction 完成上传回掉
  */
-- (void)startTasks:(void(^)(void))UIPerformanceWhenTasksHasStarted progressHandle:(void(^)(NSInteger compeletedCount,NSInteger totalCount))progressHandle compeleteAction:(void(^)(void))compeletedAction;
+- (void)startTasks:(void(^)(void))UIPerformanceWhenTasksHasStarted progressHandle:(void(^)(NSInteger compeletedCount,NSInteger totalCount,RicTask *compeletedTask))progressHandle compeleteAction:(void(^)(void))compeletedAction;
 
 /**
  继续上传任务|尚未完成

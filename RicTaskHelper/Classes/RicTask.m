@@ -40,7 +40,7 @@
             self.executing = YES;
             dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
             dispatch_async(queue, ^{
-                NSLog(@"uploading task has started!");
+                NSLog(@"task has started!");
                 if(self.taskHasBeginRun){
                     self.taskHasBeginRun(self);
                 }
@@ -56,7 +56,7 @@
                     dispatch_semaphore_wait(self.compeleteSemaphore, DISPATCH_TIME_FOREVER);
                     self.executing = NO;
                     self.finished = YES;
-                    NSLog(@"uploading task has compeleted!");
+                    NSLog(@"task has compeleted!");
                     if(self.taskHasFinished){
                         self.taskHasFinished(self);
                     }
