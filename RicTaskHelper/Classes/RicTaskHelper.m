@@ -198,6 +198,7 @@
                     [self.tasksHasNoDependcy removeObject:task];
                 }
             }
+            self.compeletedCount ++;
             if(self.uploadTaskCompeleted){
                 self.hasStart = NO;
                 self.compeletedCount = 0;
@@ -206,7 +207,6 @@
                     self.compeletedAction();
                 }
             }else{
-                self.compeletedCount ++;
                 if(self.progressHandle != NULL){
                     self.progressHandle(self.compeletedCount,self.processTasks.count,task);
                 }
