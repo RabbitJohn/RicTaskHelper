@@ -14,7 +14,7 @@
 /**
   tasks for uploading|上传任务
  */
-@property (nonatomic, strong, readonly) NSArray <RicTask *>*tasks;
+@property (atomic, strong, readonly) NSArray <RicTask *>*tasks;
 
 /**
  maximum upload count concurrently|最大同时上的传数量
@@ -38,11 +38,11 @@
 /**
  开始上传
 
- @param UIPerformanceWhenTasksHasStarted 开始处理时的UI loading 效果
+ @param UIPerformanceWhenUploadTasksHasStarted 开始上传时的UI loading 效果
  @param progressHandle 上传进度回掉
  @param compeletedAction 完成上传回掉
  */
-- (void)startTasks:(void(^)(void))UIPerformanceWhenTasksHasStarted progressHandle:(void(^)(NSInteger compeletedCount,NSInteger totalCount,RicTask *compeletedTask))progressHandle compeleteAction:(void(^)(void))compeletedAction;
+- (void)startTasks:(void(^)(void))UIPerformanceWhenTasksHasStarted progressHandle:(void(^)(NSInteger compeletedCount,NSInteger totalCount))progressHandle compeleteAction:(void(^)(void))compeletedAction;
 
 /**
  继续上传任务|尚未完成

@@ -7,7 +7,6 @@
 //
 
 // https://github.com/Specta/Specta
-
 SpecBegin(InitialSpecs)
 
 describe(@"these will fail", ^{

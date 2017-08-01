@@ -23,7 +23,7 @@ typedef void(^CompeletedNotice)(void);
 /**
  the task that depend on this one|如果更改了这个属性名，需要同步到RicTaskHelper startTask:progressHandle：compeleteAction方法中的setvalueForkey
  */
-@property (nonatomic, weak, readonly) RicTask *follower;
+@property (nonatomic, weak, readonly) RicTask *nextTask;
 // managed by developer.
 @property (nonatomic, assign) CGFloat progress;
 
@@ -39,7 +39,9 @@ typedef void(^CompeletedNotice)(void);
 /**
  operation of dataInfo | subclass should rewrite this property or method
  */
-@property (nonatomic, copy) void(^dataProcessAction)(RicTask *task,CompeletedNotice noticeBlock);
+@property (nonatomic, copy, readonly) void(^dataProcessAction)(RicTask *task,CompeletedNotice noticeBlock);
 
+
+- (void)updateNextTask:(RicTask *)nextTask;
 
 @end

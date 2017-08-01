@@ -5,6 +5,7 @@
 #import "RicDownloadTask.h"
 #import "RicTask.h"
 #import "RicTaskHelper.h"
+#import "RicTaskHelperHeader.h"
 #import "RicUploadTask.h"
 
 FOUNDATION_EXPORT double RicTaskHelperVersionNumber;

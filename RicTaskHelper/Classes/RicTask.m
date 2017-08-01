@@ -10,6 +10,7 @@
 
 @interface RicTask ()
 
+@property (nonatomic, weak) RicTask *nextTask;
 @property (nonatomic, assign) BOOL finished;
 @property (nonatomic, assign) BOOL executing;
 @property (nonatomic, strong) dispatch_semaphore_t compeleteSemaphore;
@@ -26,7 +27,9 @@
     }
     return self;
 }
-
+- (void)updateNextTask:(RicTask *)nextTask{
+    self.nextTask = nextTask;
+}
 /**
  task entry for asyn
  */
@@ -114,7 +117,12 @@
     return @"";
 }
 - (BOOL)isEqual:(RicTask *)anotherTask{
-    return anotherTask != nil && [self.taskId isEqual:anotherTask.taskId];
+    if(anotherTask != nil && [anotherTask isKindOfClass:[RicTask class]]){
+        NSString *taskId = [anotherTask.taskId copy];
+        return [self.taskId isEqual:taskId];
+    }else{
+        return NO;
+    }
 }
 
 - (void)dealloc

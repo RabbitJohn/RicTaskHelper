@@ -13,9 +13,5 @@
 - (void(^)(RicTask *task,CompeletedNotice noticeBlock))dataProcessAction{
     return self.downloadAction;
 }
-- (void)setDataProcessAction:(void (^)(RicTask *, CompeletedNotice))dataProcessAction{
-#ifdef DEBUG
-    NSAssert(NO, @"use uploadAction instead");
-#endif
-}
+
 @end
