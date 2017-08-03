@@ -26,7 +26,7 @@
     downloadTask.progressHandle = ^(CGFloat progress){
         NSLog(@"progress :%f",progress);
     };
-    downloadTask.downloadAction = ^(RicTask* task,CompeletedNotice notice){
+    downloadTask.downloadAction = ^(RicTask* task){
         NSLog(@"doloading begin");
         
         NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
@@ -47,17 +47,17 @@
     [helper startTasks:^{
         
     } progressHandle:^(NSInteger compeletedCount, NSInteger totalCount) {
-        NSLog(@"%ld/%ld",compeletedCount,totalCount);
+        NSLog(@"has compeleted download %ld/%ld",compeletedCount,totalCount);
         
     } compeleteAction:^{
-        NSLog(@"compeleted");
+        NSLog(@"download compeleted");
     }];
     
   
     RicUploadTask *uploadTask = [[RicUploadTask alloc] init];
     uploadTask.customInfomation = @{@"uploadInfo":@"an infomation here"};
-    uploadTask.uploadAction = ^(RicTask *task,CompeletedNotice noticeBlock){
-        
+    uploadTask.uploadAction = ^(RicTask *task){
+        task.progress = 1;
         /// do you uploading operation here.
         ///...
         ///...
@@ -69,10 +69,11 @@
     [uploadHelper addTask:uploadTask];
     [uploadHelper startTasks:^{
         // performing UI loading
+        
     } progressHandle:^(NSInteger compeletedCount, NSInteger totalCount) {
-        
+        NSLog(@"has upload compeleted: %ld/%ld",compeletedCount,totalCount);
     } compeleteAction:^{
-        
+        NSLog(@"upload compeleted");
     }];
     
     

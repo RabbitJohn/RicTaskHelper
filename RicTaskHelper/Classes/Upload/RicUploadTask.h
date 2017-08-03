@@ -14,6 +14,6 @@
 /**
  operation of uploading|上传操作
  */
-@property (nonatomic, copy) void(^uploadAction)(RicTask *task,CompeletedNotice notice);
+@property (nonatomic, copy) void(^uploadAction)(RicTask *task);
 
 @end

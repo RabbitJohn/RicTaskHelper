@@ -22,7 +22,7 @@
     return self;
 }
 
-- (void(^)(RicTask *task,CompeletedNotice notice))dataProcessAction{
+- (void(^)(RicTask *task))dataProcessAction{
     return self.uploadAction;
 }
 

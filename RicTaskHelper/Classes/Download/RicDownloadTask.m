@@ -10,7 +10,7 @@
 
 @implementation RicDownloadTask
 
-- (void(^)(RicTask *task,CompeletedNotice noticeBlock))dataProcessAction{
+- (void(^)(RicTask *task))dataProcessAction{
     return self.downloadAction;
 }
 

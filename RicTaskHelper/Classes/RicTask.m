@@ -50,11 +50,8 @@
                 dispatch_queue_t aq = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
                 dispatch_async(aq, ^{
                     self.compeleteSemaphore = dispatch_semaphore_create(0);
-                    CompeletedNotice notice = ^{
-                        dispatch_semaphore_signal(self.compeleteSemaphore);
-                    };
                     if(self.dataProcessAction){
-                        self.dataProcessAction(self,notice);
+                        self.dataProcessAction(self);
                     }
                     dispatch_semaphore_wait(self.compeleteSemaphore, DISPATCH_TIME_FOREVER);
                     self.executing = NO;

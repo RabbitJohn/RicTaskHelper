@@ -39,7 +39,7 @@ typedef void(^CompeletedNotice)(void);
 /**
  operation of dataInfo | subclass should rewrite this property or method
  */
-@property (nonatomic, copy, readonly) void(^dataProcessAction)(RicTask *task,CompeletedNotice noticeBlock);
+@property (nonatomic, copy, readonly) void(^dataProcessAction)(RicTask *task);
 
 
 - (void)updateNextTask:(RicTask *)nextTask;
