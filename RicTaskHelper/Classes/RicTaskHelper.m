@@ -136,7 +136,9 @@
             }else{
                 [weakSelf.processingTasks addObject:aTask];
             }
-            [weakSelf.operationQueue addOperation:aTask];
+            if(!aTask.isFinished){
+               [weakSelf.operationQueue addOperation:aTask];
+            }
         }];
     }
 }
